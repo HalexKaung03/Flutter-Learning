@@ -11,6 +11,8 @@ import 'package:flutter_course/e18_listtile.dart';
 import 'package:flutter_course/e19_circleavatar.dart';
 import 'package:flutter_course/e20_singlechildscrollview.dart';
 import 'package:flutter_course/e21_listview.dart';
+import 'package:flutter_course/e22_listview_builder.dart';
+import 'package:flutter_course/e23_gridview.dart';
 import 'package:flutter_course/e3_container.dart';
 import 'package:flutter_course/e4_image.dart';
 import 'package:flutter_course/e5_cliprrect.dart';
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Ex21ListView());
+        home: const Ex23GridView());
   }
 }
 
