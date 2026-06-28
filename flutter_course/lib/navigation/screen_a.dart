@@ -19,9 +19,17 @@ class ScreenA extends StatelessWidget {
             ElevatedButton.icon(
               icon: const Icon(Icons.arrow_forward),
               label: const Text('Go to Screen B'),
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const ScreenB()));
+              onPressed: () async {
+                const dataFromScreenA = 'data from screen A';
+                final result = await Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => const ScreenB(
+                              data: dataFromScreenA,
+                            ),
+                        settings: const RouteSettings(
+                            name: 'ScreenA', arguments: dataFromScreenA)));
+
+                debugPrint('result : $result');
               },
             ),
             // ElevatedButton.icon(
