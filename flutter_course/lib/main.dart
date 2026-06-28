@@ -25,6 +25,7 @@ import 'package:flutter_course/e6_icons.dart';
 import 'package:flutter_course/e7_card.dart';
 import 'package:flutter_course/e8_buttons.dart';
 import 'package:flutter_course/e9_row.dart';
+import 'package:flutter_course/navigation/screen_a.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Ex28StatefulLifecycle());
+        home:  ScreenA());
   }
 }
 
