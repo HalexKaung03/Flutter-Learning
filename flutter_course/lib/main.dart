@@ -46,13 +46,33 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const ScreenA(),
-      routes: {
+      /*initialRoute: 'screenA',
+      onGenerateInitialRoutes: (initialRoute)=>[
+        MaterialPageRoute(builder: (context) => const ScreenA())
+      ],*/
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case 'screenA':
+            return MaterialPageRoute(builder: (context) => const ScreenA());
+          case 'screenB':
+            return MaterialPageRoute(
+                builder: (_) =>  ScreenB(
+                      data: settings.arguments as String,
+                    ));
+          case 'screenC':
+            return MaterialPageRoute(builder: (context) => const ScreenC());
+          default:
+          return MaterialPageRoute(builder: (context) => const ScreenA());
+
+        }
+      },
+      /*routes: {
         'screenA': (context) => const ScreenA(),
         'screenB': (context) => const ScreenB(
               data: "****",
             ),
         'screenC': (context) => const ScreenC(),
-      },
+      },*/
     );
   }
 }
