@@ -26,6 +26,8 @@ import 'package:flutter_course/e7_card.dart';
 import 'package:flutter_course/e8_buttons.dart';
 import 'package:flutter_course/e9_row.dart';
 import 'package:flutter_course/navigation/screen_a.dart';
+import 'package:flutter_course/navigation/screen_b.dart';
+import 'package:flutter_course/navigation/screen_c.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,13 +39,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Course',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home:  ScreenA());
+      title: 'Flutter Course',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const ScreenA(),
+      routes: {
+        'screenA': (context) => const ScreenA(),
+        'screenB': (context) => const ScreenB(
+              data: "****",
+            ),
+        'screenC': (context) => const ScreenC(),
+      },
+    );
   }
 }
 

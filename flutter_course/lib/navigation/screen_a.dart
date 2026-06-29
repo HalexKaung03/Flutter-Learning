@@ -32,6 +32,27 @@ class ScreenA extends StatelessWidget {
                 debugPrint('result : $result');
               },
             ),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.arrow_forward),
+              label: const Text('Go to Screen B using Named'),
+              onPressed: () async {
+                const dataFromScreenA = 'data from screen A';
+                final result = await Navigator.of(context)
+                    .pushNamed('screenB', arguments: dataFromScreenA);
+
+                debugPrint('result : $result');
+              },
+            ),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.arrow_forward),
+              label: const Text('Go to Screen C using Named'),
+              onPressed: () async {
+                const dataFromScreenA = 'data from screen A';
+                final result = await Navigator.of(context).pushNamed('screenC');
+
+                debugPrint('result : $result');
+              },
+            ),
             // ElevatedButton.icon(
             //   icon: const Icon(Icons.arrow_forward),
             //   label: const Text('Go to Screen C'),
