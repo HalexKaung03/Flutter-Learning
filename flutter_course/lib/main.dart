@@ -18,6 +18,7 @@ import 'package:flutter_course/e25_gridtilebar.dart';
 import 'package:flutter_course/e26_wrap.dart';
 import 'package:flutter_course/e27_stateful.dart';
 import 'package:flutter_course/e28_stateful_lifecycle.dart';
+import 'package:flutter_course/e29_floating_action_button.dart';
 import 'package:flutter_course/e3_container.dart';
 import 'package:flutter_course/e4_image.dart';
 import 'package:flutter_course/e5_cliprrect.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ScreenA(),
+      home: const Ex29FloatingActionButton(),
       /*initialRoute: 'screenA',
       onGenerateInitialRoutes: (initialRoute)=>[
         MaterialPageRoute(builder: (context) => const ScreenA())
