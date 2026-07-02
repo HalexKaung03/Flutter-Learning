@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_course/e30_bottom_nav.dart';
 import 'package:flutter_course/e31_navigation.dart';
 import 'package:flutter_course/e32_navigationrail.dart';
+import 'package:flutter_course/e33_drawer.dart';
 import 'package:flutter_course/navigation/screen_a.dart';
 import 'package:flutter_course/navigation/screen_b.dart';
 import 'package:flutter_course/navigation/screen_c.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Ex32NavigationRail(),
+      home: Ex33Drawer(),
       /*initialRoute: 'screenA',
       onGenerateInitialRoutes: (initialRoute)=>[
         MaterialPageRoute(builder: (context) => const ScreenA())
