@@ -5,6 +5,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Build Home Screen');
     return Container(
       color: Colors.yellow,
       width: double.infinity,
