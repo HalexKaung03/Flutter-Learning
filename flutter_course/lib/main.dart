@@ -7,6 +7,8 @@ import 'package:flutter_course/e34_indexedstack.dart';
 import 'package:flutter_course/e35_popupmenu_button.dart';
 import 'package:flutter_course/e36_circularprogessindicator.dart';
 import 'package:flutter_course/e37_linearprogressindicator.dart';
+import 'package:flutter_course/e38_slider.dart';
+import 'package:flutter_course/e39_textfield.dart';
 import 'package:flutter_course/navigation/screen_a.dart';
 import 'package:flutter_course/navigation/screen_b.dart';
 import 'package:flutter_course/navigation/screen_c.dart';
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Ex37LinearProgressIndicator(),
+      home: Ex39TextField(),
       /*initialRoute: 'screenA',
       onGenerateInitialRoutes: (initialRoute)=>[
         MaterialPageRoute(builder: (context) => const ScreenA())
