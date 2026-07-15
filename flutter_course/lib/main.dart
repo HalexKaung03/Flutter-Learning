@@ -17,6 +17,7 @@ import 'package:flutter_course/e44_switch.dart';
 import 'package:flutter_course/e45_dialog.dart';
 import 'package:flutter_course/e46_bottomsheet.dart';
 import 'package:flutter_course/e47_snackbar.dart';
+import 'package:flutter_course/e48_tab.dart';
 import 'package:flutter_course/navigation/screen_a.dart';
 import 'package:flutter_course/navigation/screen_b.dart';
 import 'package:flutter_course/navigation/screen_c.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Ex47SnackBar(),
+      home: Ex48Tab(),
       /*initialRoute: 'screenA',
       onGenerateInitialRoutes: (initialRoute)=>[
         MaterialPageRoute(builder: (context) => const ScreenA())
