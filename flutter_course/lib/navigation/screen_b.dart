@@ -34,7 +34,7 @@ class ScreenB extends StatelessWidget {
                 Navigator.of(context).pop('data from screen B');
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton.icon(
