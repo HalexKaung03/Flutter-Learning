@@ -23,6 +23,7 @@ import 'package:flutter_course/e50_datepicker.dart';
 import 'package:flutter_course/e51_Timepicker.dart';
 import 'package:flutter_course/e52_dateRangePicker.dart';
 import 'package:flutter_course/e53_futurebuilder.dart';
+import 'package:flutter_course/e54_streambuilder.dart';
 import 'package:flutter_course/ex2_loginIU/sign_in.dart';
 import 'package:flutter_course/ex3_movie_ui/movie_page.dart';
 import 'package:flutter_course/navigation/screen_a.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Ex53FutureBuilder(),
+      home: Ex54StreamBuilder(),
       /*initialRoute: 'screenA',
       onGenerateInitialRoutes: (initialRoute)=>[
         MaterialPageRoute(builder: (context) => const ScreenA())
