@@ -5,13 +5,13 @@ import 'package:flutter_course/note_app/main.dart';
 import 'package:flutter_course/note_app/models/note.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
+import 'package:flutter_course/provider/service_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class NoteEditorScreen extends StatefulWidget {
-  const NoteEditorScreen({super.key, required this.noteService});
+  const NoteEditorScreen({super.key});
 
-  final NoteService noteService;
 
   @override
   State<NoteEditorScreen> createState() => _NoteEditorScreenState();
@@ -39,6 +39,8 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final NoteService noteService = ServiceProvider.of(context)!.noteSerive;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Note Editor'),
@@ -56,7 +58,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
                   currentColor.value,
                 );
                 debugPrint(note.toString());
-                widget.noteService.addNote(note);
+                noteService.addNote(note);
                 Navigator.of(context).popUntil((route)=> route.isFirst);
               } else {
                 debugPrint('note title or content is empty');

@@ -5,16 +5,17 @@ import 'package:flutter_course/note_app/screens/note_editor_screen.dart';
 import 'package:flutter_course/note_app/screens/note_search.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
 import 'package:flutter_course/note_app/screens/note_update_screen.dart';
+import 'package:flutter_course/provider/service_provider.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 
 class NoteListScreen extends StatelessWidget {
-  const NoteListScreen({super.key, required this.noteService});
+  const NoteListScreen({super.key});
 
-  final NoteService noteService;
 
   @override
   Widget build(BuildContext context) {
+    final NoteService noteService = ServiceProvider.of(context)!.noteSerive;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Note'),
@@ -23,9 +24,7 @@ class NoteListScreen extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => NoteSearch(
-                    noteService: noteService,
-                  ),
+                  builder: (context) => const NoteSearch(),
                 ),
               );
             },
@@ -37,9 +36,7 @@ class NoteListScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => NoteEditorScreen(
-                noteService: noteService,
-              ),
+              builder: (context) => const NoteEditorScreen(),
             ),
           );
         },
@@ -77,7 +74,6 @@ class NoteListScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => NoteUpdateScreen(
                           note: allNotes[index],
-                          noteService: noteService,
                         ),
                       ),
                     );

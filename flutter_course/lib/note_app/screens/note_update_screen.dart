@@ -5,15 +5,15 @@ import 'package:flutter_course/note_app/models/note.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
 import 'package:flutter_course/note_app/screens/note_search.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
+import 'package:flutter_course/provider/service_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class NoteUpdateScreen extends StatefulWidget {
   const NoteUpdateScreen(
-      {super.key, required this.note, required this.noteService});
+      {super.key, required this.note});
 
   final Note note;
-  final NoteService noteService;
 
   @override
   State<NoteUpdateScreen> createState() => _NoteUpdateScreenState();
@@ -45,6 +45,8 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
   @override
   Widget build(BuildContext context) {
     debugPrint('currentColor: $currentColor');
+    final NoteService noteService = ServiceProvider.of(context)!.noteSerive;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Note Editor'),
@@ -65,7 +67,7 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
                           child: const Text('Cancel')),
                       OutlinedButton(
                           onPressed: () {
-                            widget.noteService.deleteNote(widget.note);
+                            noteService.deleteNote(widget.note);
                             if (context.mounted) {
                               Navigator.of(context)
                                   .popUntil((route) => route.isFirst);
@@ -89,7 +91,7 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
                   DateTime.now(),
                   currentColor.value,
                 );
-                widget.noteService.updateNote(note);
+                noteService.updateNote(note);
                 debugPrint(note.toString());
                 Navigator.of(context).popUntil((route) => route.isFirst);
               } else {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_course/note_app/models/note.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
+import 'package:flutter_course/note_app/screens/splash_screen.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
+import 'package:flutter_course/provider/service_provider.dart';
 import 'package:realm/realm.dart';
 
 void main() => runApp(const NoteApp());
@@ -78,13 +80,16 @@ class _NoteAppState extends State<NoteApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Note App',
-      debugShowCheckedModeBanner: false,
-      home: NoteListScreen(
-        noteService: noteService,
+    print("Realm Database Path: ${_realm.config.path}");
+
+    return ServiceProvider(
+      noteSerive: noteService,
+      child: MaterialApp(
+        title: 'Note App',
+        debugShowCheckedModeBanner: false,
+        home: const NoteSplashScreen(),
+        theme: ThemeData.light(),
       ),
-      theme: ThemeData.dark(),
     );
   }
 }

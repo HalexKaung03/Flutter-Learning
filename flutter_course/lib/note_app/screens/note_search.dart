@@ -4,11 +4,10 @@ import 'package:flutter_course/note_app/models/note.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
 import 'package:flutter_course/note_app/screens/note_update_screen.dart';
+import 'package:flutter_course/provider/service_provider.dart';
 
 class NoteSearch extends StatefulWidget {
-  const NoteSearch({super.key, required this.noteService});
-
-  final NoteService noteService;
+  const NoteSearch({super.key});
 
   @override
   State<NoteSearch> createState() => _NoteSearchState();
@@ -36,6 +35,8 @@ class _NoteSearchState extends State<NoteSearch> {
 
   @override
   Widget build(BuildContext context) {
+    final NoteService noteService = ServiceProvider.of(context)!.noteSerive;
+
     return Scaffold(
       appBar: AppBar(
         title: TextField(
@@ -62,8 +63,8 @@ class _NoteSearchState extends State<NoteSearch> {
           onEditingComplete: () {
             setState(() {
               noteList.clear();
-              noteList.addAll(
-                  widget.noteService.searchNote(searchController.text.trim()));
+              noteList
+                  .addAll(noteService.searchNote(searchController.text.trim()));
             });
           },
         ),
@@ -90,7 +91,6 @@ class _NoteSearchState extends State<NoteSearch> {
                     MaterialPageRoute(
                       builder: (context) => NoteUpdateScreen(
                         note: noteList[index],
-                        noteService: widget.noteService,
                       ),
                     ),
                   );
