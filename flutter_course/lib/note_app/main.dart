@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_course/note_app/models/note.dart';
+import 'package:flutter_course/note_app/provider/theme_provider.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
 import 'package:flutter_course/note_app/screens/splash_screen.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
-import 'package:flutter_course/provider/service_provider.dart';
+import 'package:flutter_course/note_app/provider/service_provider.dart';
+import 'package:flutter_course/note_app/service/theme_service.dart';
+import 'package:flutter_course/note_app/theme/note_theme.dart';
 import 'package:realm/realm.dart';
 
-void main() => runApp(const NoteApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final themeMode = await ThemeService.getThemeMode();
+  runApp(NoteApp(themeMode: themeMode));
+}
 
 // List<Note> allNotes = [
 //   Note(
@@ -54,7 +62,9 @@ void main() => runApp(const NoteApp());
 // ];
 
 class NoteApp extends StatefulWidget {
-  const NoteApp({super.key});
+  const NoteApp({super.key, required this.themeMode});
+
+  final ThemeMode themeMode;
 
   @override
   State<NoteApp> createState() => _NoteAppState();
@@ -64,13 +74,23 @@ class _NoteAppState extends State<NoteApp> {
   late final Realm _realm;
   late final NoteService noteService;
 
+  late ThemeMode _themeMode = widget.themeMode;
+
   @override
   void initState() {
     super.initState();
     var config = Configuration.local([Note.schema]); //database type
     _realm = Realm(config); //database
     noteService = NoteService(_realm); //function in database
+    // loadTheme();
   }
+
+  // void loadTheme() async {
+  //   final themeMode = await ThemeService.getThemeMode();
+  //   setState(() {
+  //     _themeMode = themeMode;
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -84,11 +104,27 @@ class _NoteAppState extends State<NoteApp> {
 
     return ServiceProvider(
       noteSerive: noteService,
-      child: MaterialApp(
-        title: 'Note App',
-        debugShowCheckedModeBanner: false,
-        home: const NoteSplashScreen(),
-        theme: ThemeData.light(),
+      child: ThemeProvider(
+        themeMode: _themeMode,
+        changeTheme: () async {
+          setState(() {
+            if (_themeMode == ThemeMode.dark) {
+              _themeMode = ThemeMode.light;
+            } else {
+              _themeMode = ThemeMode.dark;
+            }
+          });
+
+          await ThemeService.setThemeMode(_themeMode);
+        },
+        child: MaterialApp(
+          title: 'Note App',
+          debugShowCheckedModeBanner: false,
+          home: const NoteSplashScreen(),
+          theme: NoteTheme.lightTheme(),
+          darkTheme: NoteTheme.darkTheme(),
+          themeMode: _themeMode,
+        ),
       ),
     );
   }

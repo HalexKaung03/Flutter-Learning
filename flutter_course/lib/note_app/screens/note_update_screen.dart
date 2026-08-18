@@ -5,13 +5,12 @@ import 'package:flutter_course/note_app/models/note.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
 import 'package:flutter_course/note_app/screens/note_search.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
-import 'package:flutter_course/provider/service_provider.dart';
+import 'package:flutter_course/note_app/provider/service_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class NoteUpdateScreen extends StatefulWidget {
-  const NoteUpdateScreen(
-      {super.key, required this.note});
+  const NoteUpdateScreen({super.key, required this.note});
 
   final Note note;
 
@@ -110,7 +109,6 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
             label: const Text(
               'Update',
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 16,
               ),
             ),
@@ -124,9 +122,12 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                DateFormat.yMMMMd().format(currentDate),
-                style: TextStyle(color: Colors.grey.shade700),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  DateFormat.yMMMMd().format(currentDate),
+                  style: TextStyle(color: Colors.grey.shade700),
+                ),
               ),
               TextField(
                 controller: titleController,
@@ -134,6 +135,7 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
                 maxLines: null,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
+                  filled: false,
                   hintText: 'Note Title',
                   hintStyle: TextStyle(
                     color: Colors.grey.shade700,
@@ -148,6 +150,7 @@ class _NoteUpdateScreenState extends State<NoteUpdateScreen> {
               TextField(
                 controller: contentController,
                 decoration: InputDecoration(
+                  filled: false,
                   hintText: 'Note Content',
                   hintStyle: TextStyle(
                     color: Colors.grey.shade700,

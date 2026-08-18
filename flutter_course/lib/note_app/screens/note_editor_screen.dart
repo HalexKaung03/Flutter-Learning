@@ -1,17 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_course/note_app/constants/colors.dart';
 import 'package:flutter_course/note_app/main.dart';
 import 'package:flutter_course/note_app/models/note.dart';
 import 'package:flutter_course/note_app/screens/note_list_screen.dart';
 import 'package:flutter_course/note_app/service/note_service.dart';
-import 'package:flutter_course/provider/service_provider.dart';
+import 'package:flutter_course/note_app/provider/service_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class NoteEditorScreen extends StatefulWidget {
   const NoteEditorScreen({super.key});
-
 
   @override
   State<NoteEditorScreen> createState() => _NoteEditorScreenState();
@@ -59,7 +57,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
                 );
                 debugPrint(note.toString());
                 noteService.addNote(note);
-                Navigator.of(context).popUntil((route)=> route.isFirst);
+                Navigator.of(context).popUntil((route) => route.isFirst);
               } else {
                 debugPrint('note title or content is empty');
               }
@@ -68,7 +66,6 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
             label: const Text(
               'Save',
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 16,
               ),
             ),
@@ -82,9 +79,12 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                DateFormat.yMMMMd().format(DateTime.now()),
-                style: TextStyle(color: Colors.grey.shade700),
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: Text(
+                  DateFormat.yMMMMd().format(DateTime.now()),
+                  style: TextStyle(color: Colors.grey.shade700),
+                ),
               ),
               TextField(
                 controller: titleController,
@@ -92,6 +92,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
                 maxLines: null,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
+                  filled: false,
                   hintText: 'Note Title',
                   hintStyle: TextStyle(
                     color: Colors.grey.shade700,
@@ -106,6 +107,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
               TextField(
                 controller: contentController,
                 decoration: InputDecoration(
+                  filled: false,
                   hintText: 'Note Content',
                   hintStyle: TextStyle(
                     color: Colors.grey.shade700,
