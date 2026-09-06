@@ -30,6 +30,7 @@ import 'package:flutter_course/ex3_movie_ui/movie_page.dart';
 import 'package:flutter_course/navigation/screen_a.dart';
 import 'package:flutter_course/navigation/screen_b.dart';
 import 'package:flutter_course/navigation/screen_c.dart';
+import 'package:flutter_course/DataFetching/postlist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MainWidget(),
+      home: PostList(),
       /*initialRoute: 'screenA',
       onGenerateInitialRoutes: (initialRoute)=>[
         MaterialPageRoute(builder: (context) => const ScreenA())
